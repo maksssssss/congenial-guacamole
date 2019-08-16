@@ -1,0 +1,217 @@
+
+
+<div class="wrapper wrapper--scroll">
+
+  <div class="d-flex align-items-center justify-content-between top__nav">
+    <img *ngIf="activePage === 1" (click)="activePage = 0" src="assets/imgs/icons/arrow-left-thin.svg" alt="arrow-left-thin">
+    <img *ngIf="activePage === 0" [routerLink]="'/set-policy/osago'" src="assets/imgs/icons/arrow-left-thin.svg" alt="arrow-left-thin">
+    <span class="text text--sm text--dark ff--sf-pro--medium">
+      Заявка на расчёт и оформление ОСАГО
+    </span>
+    <img src="assets/imgs/icons/close-thin.svg" alt="close">
+  </div>
+
+
+  <!-- ------------------------------------ PAGE ONE ------------------------------------>
+<div *ngIf="activePage === 0;"  class="osago-simple--page--one">
+  <div class="steps">
+    <div class="step">
+      <div class="title d-flex f-row align-items-start justify-content-start ff--sf-pro--medium">
+        <span class="number d-flex f-row justify-content-center align-items-center">1</span>
+        <span class="name">Для вас имеет значение, какая страховая компания выпустит полис ОСАГО?</span>
+      </div>
+      <div class="d-flex align-items-center justify-content-start radio__container">
+
+        <label class="radio-button">
+          <input (change)="isCompanySelect = true" type="radio" class="radio-button__field" name="radio">
+          <span class="radio-button__container radio-button__container--sm">Да</span>
+        </label>
+
+        <label class="radio-button">
+          <input (change)="isCompanySelect = false" type="radio" class="radio-button__field" name="radio">
+          <span class="radio-button__container radio-button__container--sm">Нет</span>
+        </label>
+
+      </div>
+      <div class="companies d-flex f-column" *ngIf="isCompanySelect">
+        <span class="name ff--sf-pro--medium exp">Выберите одну или несколько страховых компаний из списка</span>
+
+        <div class="elections d-flex f-column">
+          <div class="d-flex f-row justify-content-between">
+            <input type="checkbox" name="company__switch" id="alfa">
+            <label for="alfa" class="company__switch d-flex justify-content-center align-items-center">АльфаСтрахование</label>
+            <input type="checkbox" name="company__switch" id="absolute">
+            <label for="absolute" class="company__switch d-flex justify-content-center align-items-center">Абсолют Страхование</label>
+          </div>
+          <div class="d-flex f-row justify-content-between">
+            <input type="checkbox" name="company__switchcompany__switch" id="vck">
+            <label for="vck" class="company__switch d-flex justify-content-center align-items-center">ВСК</label>
+            <input type="checkbox" name="company__switch" id="vtb">
+            <label for="vtb" class="company__switch d-flex justify-content-center align-items-center">ВТБ Страхование</label>
+          </div>
+          <div class="d-flex f-row justify-content-between">
+            <input type="checkbox" name="company__switch" id="ingostrah">
+            <label for="ingostrah" class="company__switch d-flex justify-content-center align-items-center">Ингосстрах</label>
+            <input type="checkbox" name="company__switch" id="reco">
+            <label for="reco" class="company__switch d-flex justify-content-center align-items-center">РЕСО Гарантия</label>
+          </div>
+          <div class="d-flex f-row justify-content-between">
+            <input type="checkbox" name="company__switch" id="rosgosstrah">
+            <label for="rosgosstrah" class="company__switch d-flex justify-content-center align-items-center">Росгосстрах</label>
+            <input type="checkbox" name="company__switch" id="tinkoff">
+            <label for="tinkoff" class="company__switch d-flex justify-content-center align-items-center">Тинькофф страхование</label>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div class="step">
+      <div class="title d-flex f-row align-items-start justify-content-start ff--sf-pro--medium mb-0">
+        <span class="number d-flex f-row justify-content-center align-items-center">2</span>
+        <span class="name">Укажите регион регистрации собственника автомобиля (область, республика, АО, город федерального значения)</span>
+      </div>
+
+      <div appFloating class="d-flex f-column align-items-start justify-content-center input__holder osago-simple--input">
+        <input type="text"
+               id="locality"
+               name="locality"
+               autocomplete="off"
+               required
+               class="input--floatable border-none">
+        <label class="label"
+               for="locality">Начните вводить название</label>
+      </div>
+    </div>
+
+
+    <div class="step">
+      <div class="title d-flex f-row align-items-start justify-content-start ff--sf-pro--medium add-margin">
+        <span class="number d-flex f-row justify-content-center align-items-center">3</span>
+        <span class="name">Напишите адрес электронной почты</span>
+      </div>
+      <div appFloating class="d-flex f-column align-items-start justify-content-center input__holder osago-simple--input">
+        <input type="text"
+               id="email"
+               name="email"
+               autocomplete="off"
+               required
+               class="input--floatable border-none">
+        <label class="label"
+               for="email">Email</label>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex f-row justify-content-center align-items-center down-content">
+    <button class="btn btn--primary mb-0 mt-0" (click)="activePage = 1">Перейти к загрузке документов</button>
+  </div>
+</div>
+
+
+  <!-- ------------------------------------ PAGE TWO ------------------------------------>
+
+<div *ngIf="activePage === 1;"  class="osago-simple--page--two d-flex justify-content-center align-items-center f-column">
+  <span class="osago-simple--text__sm sfpre">
+    Все загружаемые документы защищены законом
+    (“О персональных данных” № 152-ФЗ), будут переданы
+    только в страховую компанию и использованы
+    исключительно для заключения договора ОСАГО
+  </span>
+
+  <div class="osago-simple--documentation d-flex f-column justify-content-start align-items-center">
+      <div class="osago-simple--documentation--document">
+        <div class="doc_img">
+          <img src="assets/imgs/icons/camera.svg" alt="doc">
+          <div class="img__cancel">×</div>
+        </div>
+        <span class="doc__title">Свидетельство о регистрации ТС(или ПТС) - 1 сторона</span>
+      </div>
+      <div class="osago-simple--documentation--document">
+        <div class="doc_img">
+          <img src="assets/imgs/icons/doc_img.png " alt="doc">
+          <div class="img__cancel">×</div>
+        </div>
+        <span class="doc__title">Свидетельство о регистрации ТС(или ПТС) - 2 сторона</span>
+      </div>
+    <div class="osago-simple--documentation--document">
+      <div class="doc_img">
+        <img src="assets/imgs/icons/camera.svg" alt="doc">
+        <div class="img__cancel">×</div>
+      </div>
+      <span class="doc__title">Водительское удостоверение водителя № 1 - 1 сторона</span>
+    </div>
+    <div class="osago-simple--documentation--document">
+      <div class="doc_img">
+        <img src="assets/imgs/icons/camera.svg" alt="doc">
+        <div class="img__cancel">×</div>
+      </div>
+      <span class="doc__title">Водительское удостоверение водителя № 1 - 2 сторона</span>
+    </div>
+
+
+      <div class="d-flex f-row justify-content-end align-items-center btn_add_driver">
+        <button class="btn btn--primary border-redpink">Добавить водителя</button>
+      </div>
+
+
+    <div class="osago-simple--documentation--document">
+      <div class="doc_img">
+        <img src="assets/imgs/icons/camera.svg" alt="doc">
+        <div class="img__cancel">×</div>
+      </div>
+      <span class="doc__title">Паспорт собственника - страница с фотографией</span>
+    </div>
+    <div class="osago-simple--documentation--document">
+      <div class="doc_img">
+        <img src="assets/imgs/icons/camera.svg" alt="doc">
+        <div class="img__cancel">×</div>
+      </div>
+      <span class="doc__title">Паспорт собственника - страница с фотографией</span>
+    </div>
+  </div>
+
+  <span class="ff--sf-pro--medium f-size__12__black">Владелец автомобиля будет страхователем плательщиком) по полису?</span>
+
+  <div class="d-flex align-items-center justify-content-start radio__container radio__container--page_2">
+
+    <label class="radio-button radio__btn--page_2">
+      <input type="radio" class="radio-button__field" name="radio" (change)="isInsurer = false">
+      <span class="radio-button__container radio-button__container--sm">Да</span>
+    </label>
+
+    <label class="radio-button radio__btn--page_2">
+      <input type="radio" class="radio-button__field" name="radio" (change)="isInsurer = true">
+      <span class="radio-button__container radio-button__container--sm">Нет</span>
+    </label>
+
+  </div>
+
+  <div class="osago-simple--documentation--document" *ngIf="isInsurer">
+    <div class="doc_img">
+      <img src="assets/imgs/icons/camera.svg" alt="doc">
+      <div class="img__cancel">×</div>
+    </div>
+    <span class="doc__title">Паспорт страхователя - страница с фотографией</span>
+  </div>
+  <div class="osago-simple--documentation--document" *ngIf="isInsurer">
+    <div class="doc_img">
+      <img src="assets/imgs/icons/camera.svg" alt="doc">
+      <div class="img__cancel">×</div>
+    </div>
+    <span class="doc__title">Паспорт страхователя - страница с фотографией</span>
+  </div>
+
+  <div class="d-flex f-row justify-content-center align-items-center">
+    <button class="btn btn--primary send">Отправить заявку</button>
+  </div>
+
+</div>
+
+</div>
